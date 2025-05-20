@@ -1,0 +1,65 @@
+cài thư viện
+~$ sudo apt-get install git bc
+~$ sudo apt install git bc bison flex libssl-dev make
+
+cài kernel
+~$ git clone --depth=1 -b rpi-5.4.y https://github.com/raspberrypi/linux 
+~$ cd linux  
+
+cài toolchain
+~$ git clone https://github.com/raspberrypi/tools ~/tools
+~$ sudo apt install crossbuild-essential-armhf 
+~$ sudo apt install crossbuild-essential-arm64
+
+cài tool
+~$ sudo apt-get install linux-source 
+~$ export PATH=~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbianx64/bin:$PATH
+~$ export TOOLCHAIN=~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/ 
+~$ export CROSS_COMPILE=arm-linux-gnueabihf- 
+~$ export ARCH=arm 
+
+cài driver
+~$ cd linux/ 
+~/linux$ make mrproper
+~/linux$ KERNEL=kernel7 
+~/linux$ make ARCH=arm bcm2709_defconfig
+~/linux$ make ARCH=arm menuconfig 
+~$ cd ...
+~$ make –j4  
+
+Copy kernel
+~$ lsblk 
+~$ mkdir ~/mnt 
+~$ mkdir ~/mnt/fat32 
+~$ mkdir ~/mnt/ext4 
+~$ sudo mount /dev/sdb1 ~/mnt/fat32 
+~$ sudo mount /dev/sdb2 ~/mnt/ext4 
+~$ ls -l ~/mnt/fat32/
+
+~$ cd mnt/fat32/ 
+~/mnt/fat32$ sudo gedit config.txt
+
+dtparam=i2c_arm=on 
+dtparam=spi=on 
+dtoverlay=spi0-cs 
+# Enable UART 
+enable_uart=1 
+kernel=kernel-rpi.img 
+device_tree=bcm2710-rpi-3-b.dtb
+
+Update kernel:
+~/linux$ sudo cp arch/arm/boot/zImage ~/mnt/fat32/kernel-rpi.img 
+~/linux$ sudo cp arch/arm/boot/dts/*.dtb ~/mnt/fat32/ 
+~/linux$ sudo cp arch/arm/boot/dts/overlays/*.dtb* ~/mnt/fat32/overlays/ 
+~/linux$ sudo cp arch/arm/boot/dts/overlays/README ~/mnt/fat32/overlays/ 
+~/linux$ sudo make ARCH=arm INSTALL_MOD_PATH=~/mnt/ext4 modules_install 
+
+Tháo thẻ nhớ
+~$ sudo umount ~/mnt/fat32 
+~$ sudo umount ~/mnt/ext4 
+
+Nạp module:
+~$ sudo insmod helloworld_rpi3.ko  
+~$ dmesg 
+~$ sudo rmmod helloworld_rpi3.ko 
+

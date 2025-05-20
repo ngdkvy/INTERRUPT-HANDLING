@@ -1,0 +1,19 @@
+Môn học: Hệ thống nhúng
+Lớp chiều thứ 7 - tiết 7_9
+Giảng viên: PGS.TS. Võ Minh Huân
+Nhóm 5 gồm sinh viên:
+22161043 - Nguyễn Đình Khánh Vy
+22161029 - Huỳnh Trang Vĩnh San
+22161004 - Nguyễn Hoàng Diễm Chi
+22161042 - Nguyễn Thanh Tuyền
+22161204 - Lê Kỳ Tuân
+-------------------------------------------------------------------------------------------------------
+Đề tài: Xử lý ngắt
+Mô tả: 
+	Nhập "start" vào user space, 3 LED sáng tuần tự
+	Xử lý ngắt: Khi nhấn nút nhấn 3 LED tắt, thả nút nhấn 3 LED sáng tuần tự bình thường
+	Nhập "stop" vào user space, 3 LED tắt
+-------------------------------------------------------------------------------------------------------
+Link nộp sản phẩm: 
+https://drive.google.com/drive/folders/193rXY1RUuOpwYqz47FcLSIkL5bawPsy3?usp=sharing
+

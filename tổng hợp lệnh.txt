@@ -1,0 +1,10 @@
+sudo insmod ngatchongdoi.ko
+dmesg
+lsmod
+cat /proc/interrupts
+ls /dev
+ls /sys/class
+sudo chmod 777 /dev/led_seq
+echo "start" > /dev/led_seq
+echo "stop" > /dev/led_seq
+sudo rmmod ngatchongdoi.ko
