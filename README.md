@@ -1,5 +1,5 @@
 # INTERRUPT-HANDLING #
-Thực hiện xử lý ngắt trên lớp Device Drive và cho chạy trên Raspberry Pi 3 model B+
+Thực hiện xử lý ngắt trên lớp Device Drive và cho chạy trên Raspberry Pi 3 model B+  
 Nhóm 5 gồm sinh viên
 -------------------------------------------------------------------------------------------------------
 Đề tài: Xử lý ngắt tại lớp Device Driver trong hệ thống nhúng sử dụng vi xử lý ARM  
